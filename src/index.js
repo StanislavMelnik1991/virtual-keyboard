@@ -1,5 +1,8 @@
-import { something } from './module'
-something();
-console.log("Hello World!");
+import { keyboard } from './keyboard';
+import { Keyboard1 } from './module';
+/* 
 
-let a = 0;
+import image from './assets/Group.png';
+import svginline from './assets/sorc.inl.svg'; */
+keyboard.init()
+//keyboard.creatKeys()
