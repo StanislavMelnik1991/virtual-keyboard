@@ -1,8 +1,7 @@
 import { keyboard } from './keyboard';
-import { Keyboard1 } from './module';
-/* 
+import { allButtons } from './allButtons'
 
-import image from './assets/Group.png';
-import svginline from './assets/sorc.inl.svg'; */
-keyboard.init()
-//keyboard.creatKeys()
+//import { keyboard  } from './module';
+//keyboard.init()
+//console.log(keyboard.elements.keys)
+document.body.appendChild(keyboard.init())

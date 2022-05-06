@@ -1,0 +1,20 @@
+.keyboard{
+    display: flex;
+    position: fixed;
+    left: 0;
+     /* top: 0; */
+    bottom: 0;
+    width: 100%;
+    padding-top: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: bottom 0.4s;
+    gap: 10px;
+    flex-direction: column;
+}
+.keys{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}

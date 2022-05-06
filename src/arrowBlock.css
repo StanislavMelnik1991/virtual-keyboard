@@ -1,0 +1,16 @@
+.arrowBlock{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: space-between;
+}
+.row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+.row:last-child{
+    grid-template-columns: repeat(3, 1fr);
+    
+    
+}
