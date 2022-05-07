@@ -1,5 +1,2 @@
-module.exports = {
-  // Add you postcss configuration here
-  // Learn more about it at https://github.com/webpack-contrib/postcss-loader#config-files
-  plugins: [["autoprefixer"]],
-};
+/* eslint linebreak-style: ["error", "windows"] */
+export const plugins = [['autoprefixer']];

@@ -8,15 +8,15 @@ import { control } from './allButtons'
 export const textarea = new createTextarea().init()
 
 function keyboardInit(){
-    //для проверки изменений параметров кнопок
+    // для проверки изменений параметров кнопок
     const checkControl = {
-            'caps': control.caps,
-            'num': control.num,
-            'shift': control.shift,
-            'alt': control.alt,
-            'ctrl': control.ctrl,
-            'insert': control.insert,
-            'language': control.language, 
+            caps: control.caps,
+            num: control.num,
+            shift: control.shift,
+            alt: control.alt,
+            ctrl: control.ctrl,
+            insert: control.insert,
+            language: control.language, 
     }
     document.body.innerHTML = ''
     const mainBlock = new createMainBlock().init()
