@@ -82,7 +82,7 @@ const config = {
       }
       },
       {
-        test: /\.(inl.svg)$/i,
+        test: /\.(svg)$/i,
         type: "asset/source",
       },
 

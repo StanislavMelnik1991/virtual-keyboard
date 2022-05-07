@@ -1,5 +1,5 @@
 import { keyboard } from './keyboard';
-import { allButtons } from './allButtons'
+
 
 //import { keyboard  } from './module';
 //keyboard.init()

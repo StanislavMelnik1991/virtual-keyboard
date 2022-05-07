@@ -9,7 +9,6 @@ export class createButton{
     }
     create(){
         const button = document.createElement('button')
-        button.className = keyboardStyle.buttonMain;
         if (this.symbol.length>1){
             button.textContent = this.symbol  
         }else{

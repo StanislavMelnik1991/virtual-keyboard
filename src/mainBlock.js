@@ -13,7 +13,7 @@ export class createMainBlock{
         mainBlock.className = keyboardStyle.mainBlock;
             for (let str of allButtons.mainBlock) {
                 const rows = document.createElement('div')
-                rows.className = keyboardStyle.row
+                rows.classList = keyboardStyle.row
                 for (let symbol of str) {
 
                     let leng = symbol.eng
@@ -21,7 +21,7 @@ export class createMainBlock{
                         leng = symbol.rus?symbol.rus:symbol.eng;
                     }
                     const button = new createButton(leng).create()
-                    
+                    button.classList.add(keyboardStyle.buttonMain)
                     
                     rows.appendChild(button)
                 }
