@@ -1,13 +1,14 @@
 import keyboardStyle from './arrowBlock.css';
 import { createButton } from './button'
-import { allButtons } from './allButtons'
+import { allButtons, control } from './allButtons'
 import arrow from './assets/arrow.svg';
+
 class createArrowBlock{
     constructor(){
 
     }
     init(){
-        
+                
         const arrowBlock = document.createElement('div')
         arrowBlock.className = keyboardStyle.arrowBlock;
             for (let str of allButtons.arrowBlock) {
