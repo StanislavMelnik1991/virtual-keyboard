@@ -1,5 +1,5 @@
 import keyboardStyle from './textarea.css';
-class createTextarea{
+export class createTextarea{
     constructor(){
 
     }
@@ -10,4 +10,4 @@ class createTextarea{
     }
     
 }
-export const textarea = new createTextarea().init()
+//export const textarea = new createTextarea().init()

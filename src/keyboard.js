@@ -1,9 +1,6 @@
 import keyboardStyle from './keyboard.css';
-import { textarea } from './textarea';
-import { mainBlock } from './mainBlock'
-import { arrowBlock } from './arrowBlock'
-import { numBlock } from './numBlock'
-class createKeyboard {
+
+export class createKeyboard {
     constructor(textarea, mainBlock, arrowBlock, numBlock){
         this.textarea = textarea;
         this.mainBlock = mainBlock;
@@ -25,4 +22,4 @@ class createKeyboard {
     }
 }
 
-export const keyboard = new createKeyboard(textarea ,mainBlock, arrowBlock, numBlock)
+//export const keyboard = new createKeyboard(textarea ,mainBlock, arrowBlock, numBlock)

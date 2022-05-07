@@ -1,13 +1,16 @@
 import keyboardStyle from './numBlock.css';
 import { createButton } from './button'
 import { allButtons, control } from './allButtons'
-class createNumBlock{
+export class createNumBlock{
     constructor(){
 
     }
     init(){
         const numBlock = document.createElement('div')        
         numBlock.className = keyboardStyle.numBlock;
+        if (!control.num){
+            numBlock.style.display = 'none'
+        }
 
         const caps = document.createElement('div');
         caps.className = keyboardStyle.caps;
@@ -33,14 +36,20 @@ class createNumBlock{
         const lang = document.createElement('div');
         lang.textContent = control.language
         lang.className = keyboardStyle.lang;
-num
+
         numBlock.appendChild(caps)
         numBlock.appendChild(num)
         numBlock.appendChild(lang)
+
         for (let symbol of allButtons.numBlock) {
             const button = new createButton(symbol.eng).create();
             button.className = keyboardStyle.buttons
             switch (symbol.eng) {
+                case 'Num\nLock':
+                    button.addEventListener('click',()=>{
+                        control.num = !control.num
+                    })
+                    break
                 case '+':
                     button.classList.add(keyboardStyle.buttonPlus)
                     break
@@ -59,4 +68,3 @@ num
     }
     
 }
-export const numBlock = new createNumBlock().init()

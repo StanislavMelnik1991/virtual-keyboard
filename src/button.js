@@ -1,7 +1,7 @@
 import keyboardStyle from './button.css';
-import { textarea } from './textarea';
+import { textarea } from './index';
 import { control } from './allButtons';
-import { mainBlock } from './mainBlock';
+
 
 export class createButton{
     constructor(symbol){
@@ -70,7 +70,7 @@ export class createButton{
                 button.classList.add(keyboardStyle.bigButton)
                 button.onclick=()=>{
                     control.caps = !control.caps                                     
-                    for (let i = 0;i<mainBlock.children.length;i++){ 
+                    /* for (let i = 0;i<mainBlock.children.length;i++){ 
                         for (let a = 0;a<mainBlock.children[i].children.length;a++){            
                             if (mainBlock.children[i].children[a].textContent.length===1){                            
                                 mainBlock.children[i].children[a].textContent = control.caps?
@@ -78,7 +78,7 @@ export class createButton{
                                 mainBlock.children[i].children[a].textContent.toLowerCase()
                             }
                         } 
-                    }        
+                    }         */
                 }
                 break;
             case 'Tab':
@@ -129,4 +129,3 @@ export class createButton{
     }
     
 }
-const button = new createButton()

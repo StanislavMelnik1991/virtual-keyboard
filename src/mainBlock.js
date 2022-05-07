@@ -1,7 +1,7 @@
 import keyboardStyle from './mainBlock.css';
 import { createButton } from './button'
-import { allButtons } from './allButtons'
-import { control } from './allButtons'
+import { allButtons, control } from './allButtons'
+
 
 export class createMainBlock{
     constructor(){
@@ -35,7 +35,7 @@ export class createMainBlock{
     }
     
 }
-export let mainBlock = new createMainBlock().init()
+let mainBlock = new createMainBlock().init()
 
 
     
