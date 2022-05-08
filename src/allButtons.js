@@ -1,5 +1,6 @@
 /* eslint linebreak-style: ["error", "windows"] */
 export const control = {
+  text: '',
   caps: false,
   num: true,
   shift: false,
@@ -7,6 +8,22 @@ export const control = {
   ctrl: false,
   insert: false,
   language: 'eng',
+
+  rows() {
+    return 1 + (this.text.match(/\n/g) !== null ? this.text.match(/\n/g).length : 0);
+  },
+  setLocalStorage() {
+    window.localStorage.setItem('text', this.text);
+    window.localStorage.setItem('caps', this.caps);
+    window.localStorage.setItem('num', this.num);
+    window.localStorage.setItem('language', this.language);
+  },
+  getLocalStorage() {
+    this.text = window.localStorage.getItem('text') !== undefined ? window.localStorage.getItem('text') : '';
+    this.caps = window.localStorage.getItem('caps') !== undefined ? JSON.parse(window.localStorage.getItem('caps')) : false;
+    this.num = window.localStorage.getItem('num') !== undefined ? JSON.parse(window.localStorage.getItem('num')) : true;
+    this.language = window.localStorage.getItem('language') !== undefined ? window.localStorage.getItem('language') : 'eng';
+  },
 };
 export const allButtons = {
   mainBlock: [

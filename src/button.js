@@ -1,9 +1,8 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './button.css';
-import { textarea } from './index';
 import { control } from './allButtons';
 
-export class createButton {
+class CreateButton {
   constructor(symbol) {
     this.symbol = `${symbol}`;
   }
@@ -21,40 +20,27 @@ export class createButton {
     switch (this.symbol) {
       case 'Esc':
         button.onclick = () => {
-          textarea.textContent = '';
+          control.text = '';
         };
         break;
 
       case 'F1':
         button.onclick = () => {
-          alert('Help');
+          // alert('Help');
         };
-        break;
-
-      case 'F2':
-      case 'F3':
-      case 'F4':
-      case 'F5':
-      case 'F6':
-      case 'F7':
-      case 'F8':
-      case 'F9':
-      case 'F10':
-      case 'F11':
-      case 'F12':
         break;
 
       case 'Backspace':
         button.classList.add(keyboardStyle.bigButton);
         button.onclick = () => {
-          textarea.innerHTML = textarea.innerHTML.slice(0, textarea.innerHTML.length - 1);
+          control.text = control.text.substring(0, control.text.length - 1);
         };
         break;
 
       case 'Enter':
         button.classList.add(keyboardStyle.bigButton);
         button.onclick = () => {
-          textarea.appendChild(document.createElement('br'));
+          control.text += '\n';
         };
         break;
 
@@ -62,7 +48,7 @@ export class createButton {
         button.classList.add(keyboardStyle.biggestButton);
         button.textContent = '';
         button.onclick = () => {
-          textarea.innerHTML += '&nbsp';
+          control.text += ' ';
         };
         break;
 
@@ -70,15 +56,6 @@ export class createButton {
         button.classList.add(keyboardStyle.bigButton);
         button.onclick = () => {
           control.caps = !control.caps;
-          /* for (let i = 0;i<mainBlock.children.length;i++){
-                        for (let a = 0;a<mainBlock.children[i].children.length;a++){
-                            if (mainBlock.children[i].children[a].textContent.length===1){
-                                mainBlock.children[i].children[a].textContent = control.caps?
-                                mainBlock.children[i].children[a].textContent.toUpperCase():
-                                mainBlock.children[i].children[a].textContent.toLowerCase()
-                            }
-                        }
-                    }         */
         };
         break;
       case 'Tab':
@@ -86,7 +63,6 @@ export class createButton {
         break;
       case 'Alt':
       case 'Alt Gr':
-        // button.classList.add(keyboardStyle.bigButton)
         button.onmousedown = () => {
           control.alt = !control.alt;
         };
@@ -116,7 +92,7 @@ export class createButton {
       default:
         if (this.symbol.length === 1) {
           button.onclick = () => {
-            textarea.innerHTML += control.caps
+            control.text += control.caps
               ? this.symbol.toUpperCase()
               : this.symbol.toLowerCase();
           };
@@ -127,3 +103,4 @@ export class createButton {
     return button;
   }
 }
+export default CreateButton;

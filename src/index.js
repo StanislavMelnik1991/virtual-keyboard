@@ -1,37 +1,48 @@
-import { createKeyboard} from './keyboard';
-import { createTextarea } from './textarea';
-import { createMainBlock } from './mainBlock'
-import { createArrowBlock } from './arrowBlock'
-import { createNumBlock } from './numBlock'
-import { control } from './allButtons'
+/* eslint linebreak-style: ["error", "windows"] */
+import CreateKeyboard from './keyboard';
+import CreateTextarea from './textarea';
+import CreateMainBlock from './mainBlock';
+import CreateArrowBlock from './arrowBlock';
+import CreateNumBlock from './numBlock';
+import { allButtons, control } from './allButtons';
 
-export const textarea = new createTextarea().init()
+control.getLocalStorage();
+const textarea = new CreateTextarea(control.text).init();
+export default { textarea };
+textarea.rows = control.rows();
 
-function keyboardInit(){
-    // для проверки изменений параметров кнопок
-    const checkControl = {
-            caps: control.caps,
-            num: control.num,
-            shift: control.shift,
-            alt: control.alt,
-            ctrl: control.ctrl,
-            insert: control.insert,
-            language: control.language, 
+function keyboardInit() {
+  // для проверки изменений параметров кнопок
+  const checkControl = {
+    text: control.text,
+    caps: control.caps,
+    num: control.num,
+    shift: control.shift,
+    alt: control.alt,
+    ctrl: control.ctrl,
+    insert: control.insert,
+    language: control.language,
+  };
+  document.body.innerHTML = '';
+  const mainBlock = new CreateMainBlock(allButtons.mainBlock).init();
+  const arrowBlock = new CreateArrowBlock(allButtons.arrowBlock).init();
+  const numBlock = new CreateNumBlock(allButtons.numBlock).init();
+  const keyboard = new CreateKeyboard(textarea, mainBlock, arrowBlock, numBlock).init();
+
+  keyboard.addEventListener('click', () => {
+    control.setLocalStorage();
+    textarea.textContent = control.text;
+    textarea.rows = control.rows();
+    if (checkControl.caps !== control.caps
+    || checkControl.num !== control.num
+    || checkControl.shift !== control.shift
+    || checkControl.language !== control.language
+    || checkControl.alt !== control.alt) {
+      keyboardInit();
     }
-    document.body.innerHTML = ''
-    const mainBlock = new createMainBlock().init()
-    const arrowBlock = new createArrowBlock().init()
-    const numBlock = new createNumBlock().init()
-    const keyboard = new createKeyboard(textarea ,mainBlock, arrowBlock, numBlock).init()
+  });
 
-    keyboard.addEventListener('click', ()=>{
-        if (checkControl.caps!==control.caps||checkControl.num!==control.num||checkControl.shift!==control.shift||checkControl.language!==control.language||checkControl.alt!==control.alt){
-            keyboardInit()            
-        } 
-    })
-
-    document.body.appendChild(keyboard)
+  document.body.appendChild(keyboard);
 }
 
-keyboardInit()
-
+keyboardInit();

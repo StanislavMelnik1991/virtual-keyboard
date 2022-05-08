@@ -1,7 +1,7 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './keyboard.css';
 
-export class createKeyboard {
+class CreateKeyboard {
   constructor(textarea, mainBlock, arrowBlock, numBlock) {
     this.textarea = textarea;
     this.mainBlock = mainBlock;
@@ -23,5 +23,6 @@ export class createKeyboard {
     return keyboard;
   }
 }
+export default CreateKeyboard;
 
 // export const keyboard = new createKeyboard(textarea ,mainBlock, arrowBlock, numBlock)

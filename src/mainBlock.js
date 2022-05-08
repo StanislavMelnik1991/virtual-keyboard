@@ -1,13 +1,17 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './mainBlock.css';
-import { createButton } from './button';
-import { allButtons, control } from './allButtons';
+import CreateButton from './button';
+import { control } from './allButtons';
 
-export class createMainBlock {
+class CreateMainBlock {
+  constructor(mainButtons) {
+    this.mainButtons = mainButtons;
+  }
+
   init() {
     const mainBlock = document.createElement('div');
     mainBlock.className = keyboardStyle.mainBlock;
-    for (const str of allButtons.mainBlock) {
+    for (const str of this.mainButtons) {
       const rows = document.createElement('div');
       rows.classList = keyboardStyle.row;
       for (const symbol of str) {
@@ -15,7 +19,7 @@ export class createMainBlock {
         if (control.language !== 'eng') {
           leng = symbol.rus ? symbol.rus : symbol.eng;
         }
-        const button = new createButton(leng).create();
+        const button = new CreateButton(leng).create();
         button.classList.add(keyboardStyle.buttonMain);
 
         rows.appendChild(button);
@@ -27,3 +31,4 @@ export class createMainBlock {
     return mainBlock;
   }
 }
+export default CreateMainBlock;

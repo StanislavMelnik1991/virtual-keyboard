@@ -1,18 +1,22 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './arrowBlock.css';
-import { createButton } from './button';
-import { allButtons, control } from './allButtons';
+import CreateButton from './button';
+import { control } from './allButtons';
 import arrow from './assets/arrow.svg';
 
-export class createArrowBlock {
+class CreateArrowBlock {
+  constructor(arrowButtons) {
+    this.arrowButtons = arrowButtons;
+  }
+
   init() {
     const arrowBlock = document.createElement('div');
     arrowBlock.className = keyboardStyle.arrowBlock;
-    for (const str of allButtons.arrowBlock) {
+    for (const str of this.arrowButtons) {
       const rows = document.createElement('div');
       rows.className = keyboardStyle.row;
       for (const symbol of str) {
-        const button = new createButton(symbol.eng).create();
+        const button = new CreateButton(symbol.eng).create();
         switch (symbol.eng) {
           case 'arrowUp':
             button.innerHTML = arrow;
@@ -47,7 +51,7 @@ export class createArrowBlock {
     const caps = document.createElement('div');
     caps.className = keyboardStyle.caps;
     const capsIndicator = document.createElement('div');
-    control.caps ? capsIndicator.style.backgroundColor = '#08ff00' : capsIndicator.style.backgroundColor = 'rgb(60, 60, 60)';
+    capsIndicator.style.backgroundColor = control.caps ? '#08ff00' : 'rgb(60, 60, 60)';
     capsIndicator.className = keyboardStyle.indicator;
 
     caps.appendChild(capsIndicator);
@@ -61,7 +65,7 @@ export class createArrowBlock {
     });
     num.className = keyboardStyle.num;
     const numIndicator = document.createElement('div');
-    control.num ? numIndicator.style.backgroundColor = '#08ff00' : numIndicator.style.backgroundColor = 'rgb(60, 60, 60)';
+    numIndicator.style.backgroundColor = control.num ? '#08ff00' : 'rgb(60, 60, 60)';
     numIndicator.className = keyboardStyle.indicator;
     num.appendChild(numIndicator);
     const numDescription = document.createElement('div');
@@ -84,3 +88,4 @@ export class createArrowBlock {
     return arrowBlock;
   }
 }
+export default CreateArrowBlock;

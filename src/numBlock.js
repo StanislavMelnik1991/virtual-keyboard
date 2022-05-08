@@ -1,9 +1,13 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './numBlock.css';
-import { createButton } from './button';
-import { allButtons, control } from './allButtons';
+import CreateButton from './button';
+import { control } from './allButtons';
 
-export class createNumBlock {
+export default class CreateNumBlock {
+  constructor(numButtons) {
+    this.numButtons = numButtons;
+  }
+
   init() {
     const numBlock = document.createElement('div');
     numBlock.className = keyboardStyle.numBlock;
@@ -14,7 +18,7 @@ export class createNumBlock {
     const caps = document.createElement('div');
     caps.className = keyboardStyle.caps;
     const capsIndicator = document.createElement('div');
-    control.caps ? capsIndicator.style.backgroundColor = '#08ff00' : capsIndicator.style.backgroundColor = 'rgb(60, 60, 60)';
+    capsIndicator.style.backgroundColor = control.caps ? '#08ff00' : 'rgb(60, 60, 60)';
     capsIndicator.className = keyboardStyle.indicator;
 
     caps.appendChild(capsIndicator);
@@ -25,7 +29,7 @@ export class createNumBlock {
     const num = document.createElement('div');
     num.className = keyboardStyle.num;
     const numIndicator = document.createElement('div');
-    control.num ? numIndicator.style.backgroundColor = '#08ff00' : numIndicator.style.backgroundColor = 'rgb(60, 60, 60)';
+    numIndicator.style.backgroundColor = control.num ? '#08ff00' : 'rgb(60, 60, 60)';
     numIndicator.className = keyboardStyle.indicator;
     num.appendChild(numIndicator);
     const numDescription = document.createElement('div');
@@ -40,8 +44,8 @@ export class createNumBlock {
     numBlock.appendChild(num);
     numBlock.appendChild(lang);
 
-    for (const symbol of allButtons.numBlock) {
-      const button = new createButton(symbol.eng).create();
+    for (const symbol of this.numButtons) {
+      const button = new CreateButton(symbol.eng).create();
       button.className = keyboardStyle.buttons;
       switch (symbol.eng) {
         case 'Num\nLock':
