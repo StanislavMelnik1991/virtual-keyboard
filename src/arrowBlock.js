@@ -12,41 +12,38 @@ class CreateArrowBlock {
   init() {
     const arrowBlock = document.createElement('div');
     arrowBlock.className = keyboardStyle.arrowBlock;
-    for (const str of this.arrowButtons) {
-      const rows = document.createElement('div');
-      rows.className = keyboardStyle.row;
-      for (const symbol of str) {
-        const button = new CreateButton(symbol.eng).create();
-        switch (symbol.eng) {
-          case 'arrowUp':
-            button.innerHTML = arrow;
-            button.children[0].style.transform = 'rotate(90deg)';
-            button.style.gridColumn = '2 / 4';
+    for (const symbol of this.arrowButtons) {
+      const button = new CreateButton(symbol.eng).create();
+      switch (symbol.eng) {
+        case 'arrowUp':
+          button.innerHTML = arrow;
+          button.children[0].style.transform = 'rotate(90deg)';
+          button.style.gridColumn = '2 / 3';
+          button.style.gridRow = '5 / 6';
 
-            break;
-          case 'arrowLeft':
-            button.innerHTML = arrow;
-            break;
-          case 'arrowRight':
-            button.innerHTML = arrow;
-            button.children[0].style.transform = 'rotate(180deg)';
-            break;
-          case 'arrowBottom':
-            button.innerHTML = arrow;
-            button.children[0].style.transform = 'rotate(-90deg)';
-            break;
-        }
-
-        if (symbol.eng === 'arrowBottom') {
+          break;
+        case 'arrowLeft':
+          button.innerHTML = arrow;
+          button.style.gridColumn = '1 / 2';
+          button.style.gridRow = '6 / 7';
+          break;
+        case 'arrowRight':
+          button.innerHTML = arrow;
+          button.children[0].style.transform = 'rotate(180deg)';
+          button.style.gridColumn = '3 / 4';
+          button.style.gridRow = '6 / 7';
+          break;
+        case 'arrowBottom':
           button.innerHTML = arrow;
           button.children[0].style.transform = 'rotate(-90deg)';
-        }
-
-        button.className = keyboardStyle.buttons;
-        rows.appendChild(button);
+          button.style.gridRow = '6 / 7';
+          break;
       }
-      arrowBlock.appendChild(rows);
+
+      button.className = keyboardStyle.buttons;
+      arrowBlock.appendChild(button);
     }
+
     // для отображения индикации  при выключенном Num lock
     const caps = document.createElement('div');
     caps.className = keyboardStyle.caps;
@@ -75,14 +72,17 @@ class CreateArrowBlock {
     const lang = document.createElement('div');
     lang.textContent = control.language;
     lang.className = keyboardStyle.lang;
+    lang.onclick = () => {
+      control.languageChange();
+    };
     if (control.num) {
       caps.style.display = 'none';
       num.style.display = 'none';
       lang.style.display = 'none';
     }
-    arrowBlock.firstChild.appendChild(caps);
-    arrowBlock.firstChild.appendChild(num);
-    arrowBlock.firstChild.appendChild(lang);
+    arrowBlock.appendChild(caps);
+    arrowBlock.appendChild(num);
+    arrowBlock.appendChild(lang);
 
     // console.log(mainBlock)
     return arrowBlock;

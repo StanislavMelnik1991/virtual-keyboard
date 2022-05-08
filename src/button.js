@@ -9,6 +9,7 @@ class CreateButton {
 
   create() {
     const button = document.createElement('button');
+    button.classList.add(keyboardStyle.buttonMain);
     if (this.symbol.length > 1) {
       button.textContent = this.symbol;
     } else {
@@ -19,12 +20,14 @@ class CreateButton {
 
     switch (this.symbol) {
       case 'Esc':
+        // button.classList.add(keyboardStyle.bigButton);
         button.onclick = () => {
           control.text = '';
         };
         break;
 
       case 'F1':
+        /* button.style.margin = '3px 3px 3px 6.25%'; */
         button.onclick = () => {
           // alert('Help');
         };

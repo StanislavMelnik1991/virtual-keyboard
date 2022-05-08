@@ -1,6 +1,6 @@
 .textarea{
     display: flex;
-    width: calc(100% - 30px);
+    width: calc(98% - 30px);
     margin: 0 auto;
     max-height: 250px;
     background-color: aliceblue;

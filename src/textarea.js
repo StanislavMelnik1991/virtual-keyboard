@@ -9,6 +9,7 @@ export default class CreateTextarea {
   init() {
     const textarea = document.createElement('textarea');
     textarea.className = keyboardStyle.textarea;
+    textarea.readOnly = 'true';
     textarea.textContent = this.textContent;
     return textarea;
   }

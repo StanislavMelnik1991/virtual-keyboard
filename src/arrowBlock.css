@@ -1,18 +1,10 @@
 .arrowBlock{
-    display: flex;
-    
-    flex-direction: column;
-    justify-content: space-between;
-}
-.row{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    
+    grid-template-rows: repeat(6, 1fr);
 }
-
 .buttons{
     height: 45px;
-    width: 4.189vw;
     max-width: 90px;
     margin: 3px;
     border-radius: 4px;
@@ -39,7 +31,7 @@
 }
 .caps{
     grid-column: 1 / 2;
-    grid-row: 1;
+    grid-row: 4;
     height: 100%;
     width: 70%;
     display: flex;
@@ -53,7 +45,7 @@
 .num{
     cursor: pointer;
     grid-column: 2 / 3;
-    grid-row: 1;
+    grid-row: 4;
     height: 100%;
     width: 70%;
     display: flex;
@@ -74,7 +66,7 @@
 }
 .lang{
     grid-column: 3 / 4;
-    grid-row: 1;
+    grid-row: 4;
     height: 85%;
     width: 70%;
     margin: 0 auto;
@@ -85,5 +77,5 @@
     justify-content: center;
     border: 2px solid rgb(60, 60, 60) ;
     border-radius: 50%;
-    
+    cursor: pointer;
 }

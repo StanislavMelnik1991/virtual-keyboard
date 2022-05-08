@@ -39,6 +39,9 @@ export default class CreateNumBlock {
     const lang = document.createElement('div');
     lang.textContent = control.language;
     lang.className = keyboardStyle.lang;
+    lang.onclick = () => {
+      control.languageChange();
+    };
 
     numBlock.appendChild(caps);
     numBlock.appendChild(num);

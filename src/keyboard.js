@@ -10,6 +10,9 @@ class CreateKeyboard {
   }
 
   init() {
+    window.addEventListener('keydown', (ev) => {
+      console.log(ev);
+    });
     const keyboard = document.createElement('div');
     keyboard.className = keyboardStyle.keyboard;
     keyboard.appendChild(this.textarea);

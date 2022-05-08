@@ -11,20 +11,16 @@ class CreateMainBlock {
   init() {
     const mainBlock = document.createElement('div');
     mainBlock.className = keyboardStyle.mainBlock;
-    for (const str of this.mainButtons) {
-      const rows = document.createElement('div');
-      rows.classList = keyboardStyle.row;
-      for (const symbol of str) {
-        let leng = symbol.eng;
-        if (control.language !== 'eng') {
-          leng = symbol.rus ? symbol.rus : symbol.eng;
-        }
-        const button = new CreateButton(leng).create();
-        button.classList.add(keyboardStyle.buttonMain);
 
-        rows.appendChild(button);
+    for (const symbol of this.mainButtons) {
+      let leng = symbol.eng;
+      if (control.language !== 'eng') {
+        leng = symbol.rus ? symbol.rus : symbol.eng;
       }
-      mainBlock.appendChild(rows);
+      const button = new CreateButton(leng).create();
+      button.classList.add(keyboardStyle.buttonMain);
+
+      mainBlock.appendChild(button);
     }
 
     // console.log(mainBlock)

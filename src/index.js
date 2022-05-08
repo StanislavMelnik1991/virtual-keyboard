@@ -33,6 +33,7 @@ function keyboardInit() {
     control.setLocalStorage();
     textarea.textContent = control.text;
     textarea.rows = control.rows();
+    textarea.style.display = control.text === '' ? 'none' : 'flex';
     if (checkControl.caps !== control.caps
     || checkControl.num !== control.num
     || checkControl.shift !== control.shift

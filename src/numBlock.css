@@ -2,8 +2,7 @@
     display: grid;
     padding: 5px 0;
     grid-template-columns: repeat(4, 1fr);
-    
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
    
 }
 .buttons{
@@ -92,5 +91,5 @@
     justify-content: center;
     border: 2px solid rgb(60, 60, 60) ;
     border-radius: 20px;
-    
+    cursor: pointer;
 }
