@@ -3,105 +3,98 @@ import keyboardStyle from './button.css';
 import { control } from './allButtons';
 
 class CreateButton {
-  constructor(symbol) {
-    this.symbol = `${symbol}`;
+  constructor(key) {
+    this.key = key;
   }
 
   create() {
+    const symbol = this.key[control.language] !== undefined
+      ? this.key[control.language]
+      : this.key.eng;
     const button = document.createElement('button');
     button.classList.add(keyboardStyle.buttonMain);
-    if (this.symbol.length > 1) {
-      button.textContent = this.symbol;
+    document.body.addEventListener('keydown', (ev) => {
+      ev.preventDefault();
+      if (this.key.code === ev.code) {
+        const fakeClick = new Event('click', { bubbles: true, cancelable: true });
+        button.dispatchEvent(fakeClick);
+      }
+    });
+    if (symbol.length > 1) {
+      button.textContent = symbol;
     } else {
       button.textContent = control.caps
-        ? this.symbol.toUpperCase()
-        : this.symbol.toLowerCase();
+        ? symbol.toUpperCase()
+        : symbol.toLowerCase();
     }
 
-    switch (this.symbol) {
-      case 'Esc':
-        // button.classList.add(keyboardStyle.bigButton);
-        button.onclick = () => {
+    button.onclick = function click() {
+      switch (symbol) {
+        case 'Esc':
+          // button.classList.add(keyboardStyle.bigButton);
           control.text = '';
-        };
-        break;
-
-      case 'F1':
-        /* button.style.margin = '3px 3px 3px 6.25%'; */
-        button.onclick = () => {
-          // alert('Help');
-        };
-        break;
-
-      case 'Backspace':
-        button.classList.add(keyboardStyle.bigButton);
-        button.onclick = () => {
+          break;
+        case 'F1':
+          break;
+        case 'Backspace':
+          button.classList.add(keyboardStyle.bigButton);
           control.text = control.text.substring(0, control.text.length - 1);
-        };
-        break;
-
-      case 'Enter':
-        button.classList.add(keyboardStyle.bigButton);
-        button.onclick = () => {
+          break;
+        case 'Enter':
+          button.classList.add(keyboardStyle.bigButton);
           control.text += '\n';
-        };
-        break;
-
-      case 'Space':
-        button.classList.add(keyboardStyle.biggestButton);
-        button.textContent = '';
-        button.onclick = () => {
+          break;
+        case 'Space':
+          button.classList.add(keyboardStyle.biggestButton);
+          button.textContent = '';
           control.text += ' ';
-        };
-        break;
-
-      case 'Caps\nLock':
-        button.classList.add(keyboardStyle.bigButton);
-        button.onclick = () => {
+          break;
+        case 'Caps\nLock':
+          button.classList.add(keyboardStyle.bigButton);
           control.caps = !control.caps;
-        };
-        break;
-      case 'Tab':
-        button.classList.add(keyboardStyle.bigButton);
-        break;
-      case 'Alt':
-      case 'Alt Gr':
-        button.onmousedown = () => {
-          control.alt = !control.alt;
-        };
-        button.onmouseup = () => {
-          control.alt = !control.alt;
-        };
-        break;
-      case 'Ctrl':
-        button.classList.add(keyboardStyle.bigButton);
-        button.onmousedown = () => {
-          control.ctrl = !control.ctrl;
-        };
-        button.onmouseup = () => {
-          control.ctrl = !control.ctrl;
-        };
-        break;
-      case 'Shift':
-        button.classList.add(keyboardStyle.bigButton);
-        button.onmousedown = () => {
-          control.shift = !control.shift;
-        };
-        button.onmouseup = () => {
-          control.shift = !control.shift;
-        };
-        break;
-
-      default:
-        if (this.symbol.length === 1) {
-          button.onclick = () => {
-            control.text += control.caps
-              ? this.symbol.toUpperCase()
-              : this.symbol.toLowerCase();
+          break;
+        case 'Tab':
+          button.classList.add(keyboardStyle.bigButton);
+          break;
+        case 'Alt':
+        case 'Alt Gr':
+          button.onmousedown = () => {
+            control.alt = !control.alt;
           };
-        }
-        break;
-    }
+          button.onmouseup = () => {
+            control.alt = !control.alt;
+          };
+          break;
+        case 'Ctrl':
+          button.classList.add(keyboardStyle.bigButton);
+          button.onmousedown = () => {
+            control.ctrl = !control.ctrl;
+          };
+          button.onmouseup = () => {
+            control.ctrl = !control.ctrl;
+          };
+          break;
+        case 'Shift':
+          button.classList.add(keyboardStyle.bigButton);
+          button.onmousedown = () => {
+            control.shift = !control.shift;
+            control.caps = !control.caps;
+          };
+          button.onmouseup = () => {
+            control.shift = !control.shift;
+            control.caps = !control.caps;
+          };
+          break;
+
+        default:
+          if (symbol.length === 1) {
+            control.text += control.caps
+              ? symbol.toUpperCase()
+              : symbol.toLowerCase();
+          }
+          break;
+      }
+    };
 
     return button;
   }

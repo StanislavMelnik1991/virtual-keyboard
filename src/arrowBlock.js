@@ -13,7 +13,7 @@ class CreateArrowBlock {
     const arrowBlock = document.createElement('div');
     arrowBlock.className = keyboardStyle.arrowBlock;
     for (const symbol of this.arrowButtons) {
-      const button = new CreateButton(symbol.eng).create();
+      const button = new CreateButton(symbol).create();
       switch (symbol.eng) {
         case 'arrowUp':
           button.innerHTML = arrow;

@@ -10,6 +10,7 @@ control.getLocalStorage();
 const textarea = new CreateTextarea(control.text).init();
 export default { textarea };
 textarea.rows = control.rows();
+textarea.style.display = control.text === '' ? 'none' : 'flex';
 
 function keyboardInit() {
   // для проверки изменений параметров кнопок
@@ -29,7 +30,7 @@ function keyboardInit() {
   const numBlock = new CreateNumBlock(allButtons.numBlock).init();
   const keyboard = new CreateKeyboard(textarea, mainBlock, arrowBlock, numBlock).init();
 
-  keyboard.addEventListener('click', () => {
+  keyboard.onclick = () => {
     control.setLocalStorage();
     textarea.textContent = control.text;
     textarea.rows = control.rows();
@@ -39,9 +40,18 @@ function keyboardInit() {
     || checkControl.shift !== control.shift
     || checkControl.language !== control.language
     || checkControl.alt !== control.alt) {
+      document.body.replaceWith(document.body.cloneNode(true));
       keyboardInit();
+      checkControl.text = control.text;
+      checkControl.caps = control.caps;
+      checkControl.num = control.num;
+      checkControl.shift = control.shift;
+      checkControl.alt = control.alt;
+      checkControl.ctrl = control.ctrl;
+      checkControl.insert = control.insert;
+      checkControl.language = control.language;
     }
-  });
+  };
 
   document.body.appendChild(keyboard);
 }

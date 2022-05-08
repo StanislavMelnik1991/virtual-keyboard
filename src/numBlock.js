@@ -48,7 +48,7 @@ export default class CreateNumBlock {
     numBlock.appendChild(lang);
 
     for (const symbol of this.numButtons) {
-      const button = new CreateButton(symbol.eng).create();
+      const button = new CreateButton(symbol).create();
       button.className = keyboardStyle.buttons;
       switch (symbol.eng) {
         case 'Num\nLock':
