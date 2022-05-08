@@ -26,7 +26,8 @@
     background-color: aliceblue;
     overflow: auto;
     padding: 0 10px;
-    
+    resize: none;
+    font-size: 1.2rem;
 }
 .kfo1nCSzFqbSP6nxVxBA{
     display: flex;
