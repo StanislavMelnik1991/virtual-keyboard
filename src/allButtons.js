@@ -19,10 +19,10 @@ export const control = {
     window.localStorage.setItem('language', this.language);
   },
   getLocalStorage() {
-    this.text = window.localStorage.getItem('text') !== undefined ? window.localStorage.getItem('text') : '';
-    this.caps = window.localStorage.getItem('caps') !== undefined ? JSON.parse(window.localStorage.getItem('caps')) : false;
-    this.num = window.localStorage.getItem('num') !== undefined ? JSON.parse(window.localStorage.getItem('num')) : true;
-    this.language = window.localStorage.getItem('language') !== undefined ? window.localStorage.getItem('language') : 'eng';
+    this.text = window.localStorage.getItem('text') !== null ? window.localStorage.getItem('text') : '';
+    this.caps = window.localStorage.getItem('caps') !== null ? JSON.parse(window.localStorage.getItem('caps')) : false;
+    this.num = window.localStorage.getItem('num') !== null ? JSON.parse(window.localStorage.getItem('num')) : true;
+    this.language = window.localStorage.getItem('language') !== null ? window.localStorage.getItem('language') : 'eng';
   },
 };
 export const allButtons = {
