@@ -1,5 +1,5 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './keyboard.css';
+import { control } from './allButtons';
 
 class CreateKeyboard {
   constructor(textarea, mainBlock, arrowBlock, numBlock) {
@@ -13,16 +13,17 @@ class CreateKeyboard {
     const keyboard = document.createElement('div');
     keyboard.className = keyboardStyle.keyboard;
     keyboard.appendChild(this.textarea);
-    const tmp = document.createElement('div');
-    tmp.className = keyboardStyle.keys;
-    tmp.appendChild(this.mainBlock);
-    tmp.appendChild(this.arrowBlock);
-    tmp.appendChild(this.numBlock);
-    keyboard.appendChild(tmp);
+    const block = document.createElement('div');
+    block.className = keyboardStyle.keys;
+    if (!control.num) {
+      block.style.gridTemplateColumns = '15fr 3fr';
+    }
+    block.appendChild(this.mainBlock);
+    block.appendChild(this.arrowBlock);
+    block.appendChild(this.numBlock);
+    keyboard.appendChild(block);
 
     return keyboard;
   }
 }
 export default CreateKeyboard;
-
-// export const keyboard = new createKeyboard(textarea ,mainBlock, arrowBlock, numBlock)

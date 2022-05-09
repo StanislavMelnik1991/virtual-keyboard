@@ -1,5 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
-
 export const control = {
   text: '',
   caps: false,
@@ -9,7 +7,8 @@ export const control = {
   ctrl: false,
   insert: false,
   language: 'eng',
-  languages: ['eng', 'rus'],
+  languages: ['eng', 'rus', 'bel'],
+  illumination: true,
 
   rows() {
     return 1 + (this.text.match(/\n/g) !== null ? this.text.match(/\n/g).length : 0);
@@ -145,67 +144,79 @@ export const allButtons = {
     },
     {
       code: 'Tab',
-      eng: 'Tab',
+      eng: 'Tab ↹',
     },
     {
       code: 'KeyQ',
       rus: 'й',
       eng: 'q',
+      bel: 'й',
     },
     {
       code: 'KeyW',
       rus: 'ц',
       eng: 'w',
+      bel: 'ц',
     },
     {
       code: 'KeyE',
       rus: 'у',
       eng: 'e',
+      bel: 'у',
     },
     {
       code: 'KeyR',
       rus: 'к',
       eng: 'r',
+      bel: 'к',
     },
     {
       code: 'KeyT',
       rus: 'е',
       eng: 't',
+      bel: 'е',
     },
     {
       code: 'KeyY',
       rus: 'н',
       eng: 'y',
+      bel: 'н',
     },
     {
       code: 'KeyU',
       rus: 'г',
       eng: 'u',
+      bel: 'г',
     },
     {
       code: 'KeyI',
       rus: 'ш',
       eng: 'i',
+      bel: 'ш',
     },
     {
       code: 'KeyO',
       rus: 'щ',
       eng: 'o',
+      bel: 'Ў',
     },
     {
       code: 'KeyP',
       rus: 'з',
       eng: 'p',
+      bel: 'з',
     },
     {
       code: 'BracketLeft',
       rus: 'х',
       eng: '[',
+      bel: 'х',
     },
     {
       code: 'BracketRight',
       rus: 'ъ',
       eng: ']',
+      bel: "'",
     },
     {
       code: 'Enter',
@@ -213,62 +224,73 @@ export const allButtons = {
     },
     {
       code: 'CapsLock',
-      eng: 'Caps\nLock',
+      eng: 'Caps Lock',
     },
     {
       code: 'KeyA',
       rus: 'ф',
       eng: 'a',
+      bel: 'ф',
     },
     {
       code: 'KeyS',
       rus: 'ы',
       eng: 's',
+      bel: 'ы',
     },
     {
       code: 'KeyD',
       rus: 'в',
       eng: 'd',
+      bel: 'в',
     },
     {
       code: 'KeyF',
       rus: 'а',
       eng: 'f',
+      bel: 'а',
     },
     {
       code: 'KeyG',
       rus: 'п',
       eng: 'g',
+      bel: 'п',
     },
     {
       code: 'KeyH',
       rus: 'р',
       eng: 'h',
+      bel: 'р',
     },
     {
       code: 'KeyJ',
       rus: 'о',
       eng: 'j',
+      bel: 'о',
     },
     {
       code: 'KeyK',
       rus: 'л',
       eng: 'k',
+      bel: 'л',
     },
     {
       code: 'KeyL',
       rus: 'д',
       eng: 'l',
+      bel: 'д',
     },
     {
       code: 'Semicolon',
       rus: 'ж',
       eng: ';',
+      bel: 'ж',
     },
     {
       code: 'Quote',
       rus: 'э',
       eng: "'",
+      bel: 'э',
     },
     {
       code: 'Backslash',
@@ -292,51 +314,61 @@ export const allButtons = {
       code: 'KeyZ',
       rus: 'я',
       eng: 'z',
+      bel: 'я',
     },
     {
       code: 'KeyX',
       rus: 'ч',
       eng: 'x',
+      bel: 'ч',
     },
     {
       code: 'KeyC',
       rus: 'с',
       eng: 'c',
+      bel: 'с',
     },
     {
       code: 'KeyV',
       rus: 'м',
       eng: 'v',
+      bel: 'м',
     },
     {
       code: 'KeyB',
       rus: 'и',
       eng: 'b',
+      bel: 'и',
     },
     {
       code: 'KeyN',
       rus: 'т',
       eng: 'n',
+      bel: 'т',
     },
     {
       code: 'KeyM',
       rus: 'ь',
       eng: 'm',
+      bel: 'ь',
     },
     {
       code: 'Comma',
       rus: 'б',
       eng: ',',
+      bel: 'б',
     },
     {
       code: 'Period',
       rus: 'ю',
       eng: '.',
+      bel: 'ю',
     },
     {
       code: 'Slash',
       rus: '.',
       eng: '/',
+      bel: '.',
     },
     {
       code: 'ShiftRight',
@@ -356,7 +388,7 @@ export const allButtons = {
     },
     {
       code: 'Space',
-      eng: 'Space',
+      eng: '',
     },
     {
       code: 'AltRight',
@@ -410,19 +442,19 @@ export const allButtons = {
     },
     {
       code: 'ArrowUp',
-      eng: 'arrowUp',
+      eng: '⇧',
     },
     {
       code: 'ArrowLeft',
-      eng: 'arrowLeft',
+      eng: '⇦',
     },
     {
       code: 'ArrowDown',
-      eng: 'arrowBottom',
+      eng: '⇩',
     },
     {
       code: 'ArrowRight',
-      eng: 'arrowRight',
+      eng: '⇨',
     },
   ],
   numBlock: [

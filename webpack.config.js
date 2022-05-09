@@ -25,18 +25,18 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       templateContent: () => new Promise((resolve) => resolve(`
-            <!DOCTYPE html>
-            <html>
-                <head>
-                    <meta charset="utf-8" />
-                    <title>Virtual keyboard</title>
-                </head>
-                <body>
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <title>Virtual keyboard</title>
+    </head>
+    <body>
 
-                </body>
+    </body>
                 
-            </html>
-            `)),
+  </html>
+`)),
     }),
     new CleanWebpackPlugin(),
     // Add your plugins here

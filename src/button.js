@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './button.css';
 import { control } from './allButtons';
 
@@ -12,12 +11,28 @@ class CreateButton {
       ? this.key[control.language]
       : this.key.eng;
     const button = document.createElement('button');
-    button.classList.add(keyboardStyle.buttonMain);
+    button.className = (keyboardStyle.buttonMain);
+    if (control.illumination) {
+      button.classList.add(keyboardStyle.illuminationOn);
+    } else {
+      button.classList.remove(keyboardStyle.illuminationOn);
+    }
     document.body.addEventListener('keydown', (ev) => {
       ev.preventDefault();
       if (this.key.code === ev.code) {
         const fakeClick = new Event('click', { bubbles: true, cancelable: true });
+        const fakeKeyDown = new Event('mousedown', { bubbles: true, cancelable: true });
         button.dispatchEvent(fakeClick);
+        button.dispatchEvent(fakeKeyDown);
+        button.classList.add(keyboardStyle.active);
+      }
+    });
+    document.body.addEventListener('keyup', (ev) => {
+      ev.preventDefault();
+      if (this.key.code === ev.code) {
+        const fakeKeyUp = new Event('mouseup', { bubbles: true, cancelable: true });
+        button.dispatchEvent(fakeKeyUp);
+        button.classList.remove(keyboardStyle.active);
       }
     });
     if (symbol.length > 1) {
@@ -28,10 +43,9 @@ class CreateButton {
         : symbol.toLowerCase();
     }
 
-    button.onclick = function click() {
+    button.onclick = () => {
       switch (symbol) {
         case 'Esc':
-          // button.classList.add(keyboardStyle.bigButton);
           control.text = '';
           break;
         case 'F1':
@@ -44,58 +58,71 @@ class CreateButton {
           button.classList.add(keyboardStyle.bigButton);
           control.text += '\n';
           break;
-        case 'Space':
+        case '':
           button.classList.add(keyboardStyle.biggestButton);
-          button.textContent = '';
           control.text += ' ';
           break;
-        case 'Caps\nLock':
+        case 'Caps Lock':
           button.classList.add(keyboardStyle.bigButton);
           control.caps = !control.caps;
           break;
-        case 'Tab':
+        case 'Tab ↹':
           button.classList.add(keyboardStyle.bigButton);
+          control.text += '    ';
           break;
-        case 'Alt':
-        case 'Alt Gr':
-          button.onmousedown = () => {
-            control.alt = !control.alt;
-          };
-          button.onmouseup = () => {
-            control.alt = !control.alt;
-          };
-          break;
-        case 'Ctrl':
-          button.classList.add(keyboardStyle.bigButton);
-          button.onmousedown = () => {
-            control.ctrl = !control.ctrl;
-          };
-          button.onmouseup = () => {
-            control.ctrl = !control.ctrl;
-          };
-          break;
-        case 'Shift':
-          button.classList.add(keyboardStyle.bigButton);
-          button.onmousedown = () => {
-            control.shift = !control.shift;
-            control.caps = !control.caps;
-          };
-          button.onmouseup = () => {
-            control.shift = !control.shift;
-            control.caps = !control.caps;
-          };
-          break;
-
         default:
           if (symbol.length === 1) {
-            control.text += control.caps
-              ? symbol.toUpperCase()
-              : symbol.toLowerCase();
+            if (control.shift) {
+              control.text += !control.caps
+                ? symbol.toUpperCase()
+                : symbol.toLowerCase();
+            } else {
+              control.text += control.caps
+                ? symbol.toUpperCase()
+                : symbol.toLowerCase();
+            }
           }
+      }
+    };
+    button.onmousedown = () => {
+      switch (symbol) {
+        case 'Alt' || 'Alt Gr':
+          control.alt = true;
+          break;
+        case 'Ctrl':
+          control.ctrl = true;
+          break;
+        case 'Shift':
+          control.shift = true;
+          break;
+        default:
           break;
       }
     };
-
+    button.onmouseup = () => {
+      switch (symbol) {
+        case 'Alt' || 'Alt Gr':
+          if (control.shift) {
+            control.languageChange();
+          }
+          control.alt = false;
+          break;
+        case 'Ctrl':
+          if (control.shift) {
+            control.languageChange();
+          }
+          control.ctrl = false;
+          break;
+        case 'Shift':
+          if (control.alt || control.ctrl) {
+            control.languageChange();
+          }
+          control.shift = false;
+          break;
+        default:
+          break;
+      }
+    };
     return button;
   }
 }

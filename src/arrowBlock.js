@@ -1,8 +1,6 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './arrowBlock.css';
 import CreateButton from './button';
 import { control } from './allButtons';
-import arrow from './assets/arrow.svg';
 
 class CreateArrowBlock {
   constructor(arrowButtons) {
@@ -12,39 +10,32 @@ class CreateArrowBlock {
   init() {
     const arrowBlock = document.createElement('div');
     arrowBlock.className = keyboardStyle.arrowBlock;
-    for (const symbol of this.arrowButtons) {
+    this.arrowButtons.forEach((symbol) => {
       const button = new CreateButton(symbol).create();
-      switch (symbol.eng) {
-        case 'arrowUp':
-          button.innerHTML = arrow;
-          button.children[0].style.transform = 'rotate(90deg)';
-          button.style.gridColumn = '2 / 3';
-          button.style.gridRow = '5 / 6';
+      button.classList.add(keyboardStyle.button);
+      switch (symbol.code) {
+        case 'ArrowUp':
+          button.style.gridColumn = '2';
+          button.style.gridRow = '5';
 
           break;
-        case 'arrowLeft':
-          button.innerHTML = arrow;
+        case 'ArrowLeft':
           button.style.gridColumn = '1 / 2';
           button.style.gridRow = '6 / 7';
           break;
-        case 'arrowRight':
-          button.innerHTML = arrow;
-          button.children[0].style.transform = 'rotate(180deg)';
+        case 'ArrowRight':
+
           button.style.gridColumn = '3 / 4';
           button.style.gridRow = '6 / 7';
           break;
-        case 'arrowBottom':
-          button.innerHTML = arrow;
-          button.children[0].style.transform = 'rotate(-90deg)';
+        case 'ArrowDown':
           button.style.gridRow = '6 / 7';
           break;
+        default:
+          break;
       }
-
-      button.className = keyboardStyle.buttons;
       arrowBlock.appendChild(button);
-    }
-
-    // для отображения индикации  при выключенном Num lock
+    });
     const caps = document.createElement('div');
     caps.className = keyboardStyle.caps;
     const capsIndicator = document.createElement('div');
@@ -84,7 +75,6 @@ class CreateArrowBlock {
     arrowBlock.appendChild(num);
     arrowBlock.appendChild(lang);
 
-    // console.log(mainBlock)
     return arrowBlock;
   }
 }

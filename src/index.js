@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import CreateKeyboard from './keyboard';
 import CreateTextarea from './textarea';
 import CreateMainBlock from './mainBlock';
@@ -13,16 +12,12 @@ textarea.rows = control.rows();
 textarea.style.display = control.text === '' ? 'none' : 'flex';
 
 function keyboardInit() {
-  // для проверки изменений параметров кнопок
   const checkControl = {
     text: control.text,
     caps: control.caps,
     num: control.num,
-    shift: control.shift,
-    alt: control.alt,
-    ctrl: control.ctrl,
-    insert: control.insert,
     language: control.language,
+    illumination: control.illumination,
   };
   document.body.innerHTML = '';
   const mainBlock = new CreateMainBlock(allButtons.mainBlock).init();
@@ -37,18 +32,21 @@ function keyboardInit() {
     textarea.style.display = control.text === '' ? 'none' : 'flex';
     if (checkControl.caps !== control.caps
     || checkControl.num !== control.num
-    || checkControl.shift !== control.shift
     || checkControl.language !== control.language
-    || checkControl.alt !== control.alt) {
+    || checkControl.illumination !== control.illumination) {
       document.body.replaceWith(document.body.cloneNode(true));
       keyboardInit();
       checkControl.text = control.text;
       checkControl.caps = control.caps;
       checkControl.num = control.num;
-      checkControl.shift = control.shift;
-      checkControl.alt = control.alt;
-      checkControl.ctrl = control.ctrl;
-      checkControl.insert = control.insert;
+      checkControl.language = control.language;
+      checkControl.illumination = control.illumination;
+    }
+  };
+  keyboard.onmouseup = () => {
+    if (checkControl.language !== control.language) {
+      document.body.replaceWith(document.body.cloneNode(true));
+      keyboardInit();
       checkControl.language = control.language;
     }
   };
@@ -57,3 +55,18 @@ function keyboardInit() {
 }
 
 keyboardInit();
+const instructions = document.createElement('p');
+instructions.textContent = `
+  press "Alt" + "Shift" or "Ctrl" + "Shift" or click "Language icon" to change language For any questions, please contact Discord: StanislavMelnik#6792
+`;
+document.body.prepend(instructions);
+
+window.addEventListener('resize', () => {
+  let tmp = control.num;
+  control.num = !window.matchMedia('(max-width: 1200px)').matches;
+  if (tmp !== control.num) {
+    tmp = control.num;
+    document.body.replaceWith(document.body.cloneNode(true));
+    keyboardInit();
+  }
+});

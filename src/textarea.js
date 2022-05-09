@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 import keyboardStyle from './textarea.css';
 
 export default class CreateTextarea {
@@ -10,9 +9,8 @@ export default class CreateTextarea {
     const textarea = document.createElement('textarea');
     textarea.className = keyboardStyle.textarea;
     textarea.readOnly = 'true';
+    textarea.wrap = 'hard';
     textarea.textContent = this.textContent;
     return textarea;
   }
 }
-
-// export const textarea = new createTextarea().init()
