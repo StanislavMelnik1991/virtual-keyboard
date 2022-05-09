@@ -1,0 +1,50 @@
+.mainBlock{
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    width: 100%;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 3px;
+    margin: 0 auto;
+}
+.buttonMain:nth-child(1){
+    grid-column: 1 / 3;
+    grid-row: 1;
+    width: 50%;
+  }
+  .buttonMain:nth-child(5){
+    grid-column: 6 / 8;
+    grid-row: 1;
+    width: 50%;
+  }
+  .buttonMain:nth-child(9){
+    grid-column: 11 / 13;
+    grid-row: 1;
+    width: 50%;
+  }
+  .buttonMain:nth-child(27){
+    grid-column: 14 / 17;
+    grid-row: 2;
+  }
+  .buttonMain:nth-child(28){
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+  .buttonMain:nth-child(41){
+    grid-column: 15 / 17;
+    grid-row: 3 / 5;
+    height: 96%;
+  }
+  .buttonMain:nth-child(42){
+    grid-column: 1 / 3;
+    grid-row: 4;
+  }
+  .buttonMain:nth-child(55){
+    grid-column: 1 / 3;
+    grid-row: 5;
+  }
+  .buttonMain:nth-child(67){
+    grid-column: 15 / 17;
+  }
+  .buttonMain:nth-child(71){
+    grid-column: 4 / 14;
+  }

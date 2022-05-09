@@ -1,0 +1,22 @@
+.keyboard{
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0 3px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    transition: bottom 0.4s;
+    gap: 10px;
+    flex-direction: column;
+}
+.keys{
+    display: grid;
+    width: 99%;
+    grid-template-columns: 15fr 3fr 4fr;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 0 auto;
+}

@@ -1,0 +1,60 @@
+.arrowBlock{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 3px;
+}
+.button:nth-child(-n+9){
+    font-size: 0.75rem;
+    padding: 5px;
+}
+.caps{
+    grid-column: 1 / 2;
+    grid-row: 4;
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    font-size: 0.8rem;
+    margin: 0 auto;
+    text-align: center;
+    align-self: center;
+}
+.num{
+    cursor: pointer;
+    grid-column: 2 / 3;
+    grid-row: 4;
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    margin: 0 auto;
+    text-align: center;
+    align-self: center;
+    font-size: 0.8rem;
+}
+.indicator{
+    width: 17px;
+    height: 6px;
+    align-self: center;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.lang{
+    grid-column: 3 / 4;
+    grid-row: 4;
+    height: 85%;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    color: #ffffff;
+    flex-direction: column;
+    text-align: center;    
+    justify-content: center;
+    border: 2px solid rgb(60, 60, 60) ;
+    border-radius: 50%;
+    cursor: pointer;
+}
